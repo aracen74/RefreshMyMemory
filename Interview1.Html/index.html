@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+</head>
+<body ng-app="app">
+    <div class="jumbotron">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#/">MVC - WEB API - Angular - SignalR</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#/">Home</a></li>
+                        <li><a href="#/people">People</a></li>
+                        <li><a href="#/chat">Chat</a></li>
+                    </ul>
+                </div><!--/.nav-collapse from index.html -->
+            </div>
+        </nav>
+
+        <div ng-view></div>
+    </div>
+
+
+
+
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script src="Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="/signalr/hubs"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="Scripts/angular-resource.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script src="Scripts/underscore.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="App/app.js"></script>
+    <script src="App/chat/controllers/chatController.js"></script>
+    <script src="App/trips/tripsService.js"></script>
+    <script src="App/trips/tripsController.js"></script>
+    <script src="App/trips/tripEditorController.js"></script>
+    <script src="App/common/crud$http.js"></script>
+    <script src="App/people/controllers/peopleController.js"></script>
+    <script src="App/people/controllers/peopleEditController.js"></script>
+</body>
+</html>

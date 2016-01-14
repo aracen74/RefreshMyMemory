@@ -1,0 +1,21 @@
+<div class="col-md-6 col-md-offset-3">
+    <div ng-controller="peopleEditController as vm">
+
+        <div class="form-group">
+            <div class="form-control">
+                <label for="personFirstName">Name</label>
+                <input name="personFirstName" ng-model="vm.person.firstName" />
+            </div>
+            <div class="form-control">
+                <label for="personLastName">Trip Date</label>
+                <input name="personLastName" ng-model="vm.person.lastName" />
+            </div>
+            <div class="form-control">
+                <label for="personAddress">Trip Date</label>
+                <input name="personAddress" ng-model="vm.person.address" />
+            </div>
+            <input type="button" ng-click="vm.updatePerson();" class="btn btn-sm btn-primary" value="Update">
+            <input type="button" ng-click="vm.deletePerson();" class="btn btn-sm btn-primary" value="Delete">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+C:\dev\Interview1\Interview1.Entities\bin\Debug\Interview1.Entities.dll.config
+C:\dev\Interview1\Interview1.Entities\bin\Debug\Interview1.Entities.dll
+C:\dev\Interview1\Interview1.Entities\bin\Debug\Interview1.Entities.pdb
+C:\dev\Interview1\Interview1.Entities\bin\Debug\EntityFramework.dll
+C:\dev\Interview1\Interview1.Entities\bin\Debug\EntityFramework.SqlServer.dll
+C:\dev\Interview1\Interview1.Entities\bin\Debug\EntityFramework.xml
+C:\dev\Interview1\Interview1.Entities\bin\Debug\EntityFramework.SqlServer.xml
+C:\dev\Interview1\Interview1.Entities\obj\Debug\Interview1.Entities.csprojResolveAssemblyReference.cache
+C:\dev\Interview1\Interview1.Entities\obj\Debug\Interview1.Entities.dll
+C:\dev\Interview1\Interview1.Entities\obj\Debug\Interview1.Entities.pdb

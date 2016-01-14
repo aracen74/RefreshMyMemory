@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InterviewEntitiesContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Blog">
+    <Key>
+      <PropertyRef Name="BlogId" />
+    </Key>
+    <Property Name="BlogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="InterviewEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Blogs" EntityType="Self.Blog" />
+    <EntitySet Name="People" EntityType="InterviewEntitiesContext.Person" />
+    <EntitySet Name="Orders" EntityType="InterviewEntitiesContext.Order" />
+    <EntitySet Name="LineItems" EntityType="InterviewEntitiesContext.LineItem" />
+    <AssociationSet Name="PersonOrder" Association="InterviewEntitiesContext.PersonOrder">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <EntitySet Name="Products" EntityType="InterviewEntitiesContext.Product" />
+    <AssociationSet Name="ProductLineItem" Association="InterviewEntitiesContext.ProductLineItem">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="LineItem" EntitySet="LineItems" />
+    </AssociationSet>
+    <AssociationSet Name="OrderLineItem" Association="InterviewEntitiesContext.OrderLineItem">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="LineItem" EntitySet="LineItems" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Orders" Relationship="InterviewEntitiesContext.PersonOrder" FromRole="Person" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Person" Relationship="InterviewEntitiesContext.PersonOrder" FromRole="Order" ToRole="Person" />
+    <Property Name="PersonId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="LineItems" Relationship="InterviewEntitiesContext.OrderLineItem" FromRole="Order" ToRole="LineItem" />
+  </EntityType>
+  <EntityType Name="LineItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="InterviewEntitiesContext.ProductLineItem" FromRole="LineItem" ToRole="Product" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="InterviewEntitiesContext.OrderLineItem" FromRole="LineItem" ToRole="Order" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="PersonOrder">
+    <End Type="InterviewEntitiesContext.Person" Role="Person" Multiplicity="1" />
+    <End Type="InterviewEntitiesContext.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Cost" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="LineItems" Relationship="InterviewEntitiesContext.ProductLineItem" FromRole="Product" ToRole="LineItem" />
+  </EntityType>
+  <Association Name="ProductLineItem">
+    <End Type="InterviewEntitiesContext.Product" Role="Product" Multiplicity="1" />
+    <End Type="InterviewEntitiesContext.LineItem" Role="LineItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LineItem">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderLineItem">
+    <End Type="InterviewEntitiesContext.Order" Role="Order" Multiplicity="1" />
+    <End Type="InterviewEntitiesContext.LineItem" Role="LineItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LineItem">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,19 @@
+{
+  "name": "Interview1.Html",
+  "authors": [
+    "aracen74 <aracen@yahoo.com>"
+  ],
+  "description": "test project",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
